@@ -9,7 +9,24 @@ text-align: center;
 
 }
 
-
+.
+{ 
+   /* style the image block as per your design */ 
+}
+.imgblk img 
+{ 
+   width:150px; 
+   height:150px; 
+   object-fit:cover: 
+   transition:all ease .3s;
+   display:inline-block:
+   margin-right:5px;
+}
+.imgblk img:hover 
+{
+   transform: translate(-1px, -3px);
+   box-shadow: 0px 2px 5px 0px #333;
+}
 
 
 
