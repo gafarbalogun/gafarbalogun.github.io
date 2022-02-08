@@ -13,7 +13,7 @@ text-align: center;
 { 
    /* style the image block as per your design */ 
 }
-.IIIII img 
+.imgblk img 
 { 
    width:150px; 
    height:150px; 
@@ -22,7 +22,7 @@ text-align: center;
    display:inline-block:
    margin-right:5px;
 }
-.IIIII img:hover 
+.imgblk img:hover 
 {
    transform: translate(-1px, -3px);
    box-shadow: 0px 2px 5px 0px #333;
