@@ -1,0 +1,37 @@
+[
+  {
+    "title": "I let Claude write my code. The work that mattered was somewhere else.",
+    "url": "https://medium.com/@gafar.cloud/i-let-claude-write-my-code-the-work-that-mattered-was-somewhere-else-d53750d4359f",
+    "date": "2026-05-06",
+    "tags": ["artificial-intelligence", "cybersecurity", "systems-thinking", "careers"],
+    "snippet": "My honest take after pair-programming with Claude for a day — shipping a CVE scanner across every Mac package manager without typing a line of code myself."
+  },
+  {
+    "title": "Deploying My EKS Cluster & Node Group with Terraform — Phase 2",
+    "url": "https://medium.com/@gafar.cloud/deploying-my-eks-cluster-node-group-with-terraform-phase-2-0ef12217ebf6",
+    "date": "2025-10-20",
+    "tags": ["vpc", "kubernetes-cluster", "terraform", "aws-eks"],
+    "snippet": "Phase 1 set the foundation — networking, subnets, NAT Gateway, endpoints. Phase 2 makes it real: deploying the Kubernetes control plane with Terraform."
+  },
+  {
+    "title": "Securing Kubernetes in the Cloud: Phase 1 ~ VPC and Networking Setup",
+    "url": "https://medium.com/@gafar.cloud/securing-kubernetes-in-the-cloud-phase-1-vpc-and-networking-setup-bdc1d96fc7bb",
+    "date": "2025-10-07",
+    "tags": ["terraform", "aws", "aws-networking", "vpc-endpoint"],
+    "snippet": "Laying the foundation of the cloud environment before touching containers or automation — a scalable base built entirely with Terraform."
+  },
+  {
+    "title": "Securing Kubernetes in the Cloud: Phase 0",
+    "url": "https://medium.com/@gafar.cloud/project-description-c43d7e545267",
+    "date": "2025-10-03",
+    "tags": ["iam-roles", "mfa", "kubernetes", "aws"],
+    "snippet": "Building a secure cloud lab in AWS — deploying a vulnerable app into an environment scanned by Prowler, with IAM, ECR, and Kubernetes in the mix."
+  },
+  {
+    "title": "Starting This Blog",
+    "url": "https://medium.com/@gafar.cloud/starting-this-blog-3847e747a21d",
+    "date": "2025-10-03",
+    "tags": ["aws", "learning-in-public", "cloud-computing", "kubernetes"],
+    "snippet": "Writing here to document lessons learned and share updates on projects in progress — not about being polished, about keeping track of what's being built."
+  }
+]

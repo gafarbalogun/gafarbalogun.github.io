@@ -62,6 +62,9 @@ security tooling. Always glad to connect with people doing similar
 work — see <span class="accent">contact</span>.`,
   };
 
+  let posts = [];
+  fetch('posts.json').then(r => r.json()).then(data => { posts = data; }).catch(() => {});
+
   const projects = [
     {
       name: 'cnapp-eks',
@@ -102,6 +105,11 @@ work — see <span class="accent">contact</span>.`,
     terminal.scrollTop = terminal.scrollHeight;
   }
 
+  function fmtDate(iso){
+    const d = new Date(iso + 'T00:00:00Z');
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+  }
+
   const commands = {
     help(){
       print(`<span class="section-title">available commands</span>
@@ -114,8 +122,23 @@ work — see <span class="accent">contact</span>.`,
   <span class="accent">ls</span>               list project files
   <span class="accent">cat &lt;file&gt;</span>      read a project/log file
   <span class="accent">projects</span>         same as ls, expanded view
+  <span class="accent">blog</span>              latest posts from medium.com/@gafar.cloud
   <span class="accent">contact</span>          how to reach me
   <span class="accent">clear</span>            clear the screen`);
+    },
+    blog(){
+      if (!posts.length) {
+        print(`<span class="dim">loading posts... run 'blog' again in a second, or read them directly at</span> <a href="https://medium.com/@gafar.cloud" target="_blank" rel="noopener">medium.com/@gafar.cloud</a>`);
+        return;
+      }
+      let block = `<span class="section-title">blog — medium.com/@gafar.cloud</span>\n`;
+      posts.forEach(p => {
+        block += `  <span class="hl">${esc(p.title)}</span>\n`;
+        block += `  <span class="dim">${fmtDate(p.date)} · ${p.tags.join(', ')}</span>\n`;
+        block += `  ${esc(p.snippet)}\n`;
+        block += `  <a href="${p.url}" target="_blank" rel="noopener">${p.url}</a>\n\n`;
+      });
+      print(block.trim());
     },
     whoami(){ print(files['whoami.txt']()); },
     about(){ commands.whoami(); },
