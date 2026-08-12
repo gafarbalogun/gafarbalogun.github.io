@@ -158,7 +158,7 @@ work — see <span class="accent">contact</span>.`,
     projects(){
       let block = `<span class="section-title">projects</span>\n`;
       projects.forEach(p => {
-        block += `  <span class="accent">${p.name}</span> <span class="dim">(${p.status})</span>\n    ${p.desc}\n    <a href="${p.url}" target="_blank" rel="noopener">${p.url}</a>\n\n`;
+        block += `  <span class="accent">${p.name}</span>\n    ${p.desc}\n    <a href="${p.url}" target="_blank" rel="noopener">${p.url}</a>\n\n`;
       });
       block += `<span class="dim">more on <a href="${GH}?tab=repositories" target="_blank" rel="noopener">github.com/gafarbalogun</a></span>`;
       print(block);

@@ -40,10 +40,7 @@ function fetchPosts(){
 function projectCard(p){
   return `
     <div class="card">
-      <div class="card-top">
-        <h3>${esc(p.name)}</h3>
-        <span class="badge ${p.status === 'done' ? 'badge-ok' : p.status === 'in progress' ? 'badge-warn' : 'badge-active'}">${esc(p.status)}</span>
-      </div>
+      <h3>${esc(p.name)}</h3>
       <p>${esc(p.desc)}</p>
       <a href="${p.url}" target="_blank" rel="noopener">${p.url.replace('https://', '')}</a>
     </div>`;
