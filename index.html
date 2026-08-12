@@ -9,10 +9,20 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<button id="mode-toggle" class="mode-toggle" title="switch view">
+  <span class="mode-toggle-icon">⇄</span>
+  <span id="mode-toggle-label">regular view</span>
+</button>
+
 <div id="crt">
   <header class="topbar">
     <div class="dots"><span></span><span></span><span></span></div>
     <div class="title">gafar@cloud-sec — bash — 100x40</div>
+    <label class="ac-toggle" title="tab-complete commands">
+      <input type="checkbox" id="ac-toggle" checked>
+      <span>autocomplete</span>
+    </label>
   </header>
 
   <main id="terminal" tabindex="0">
@@ -21,12 +31,65 @@
 
     <div class="input-line">
       <span class="prompt"><span class="user">gafar</span><span class="at">@</span><span class="host">cloud-sec</span><span class="colon">:</span><span class="path">~</span><span class="dollar">$</span></span>
-      <input id="cmd-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" />
-      <span class="cursor" id="fake-cursor"></span>
+      <span class="input-wrap">
+        <span class="ghost" id="ghost"></span>
+        <input id="cmd-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" />
+      </span>
     </div>
   </main>
 
-  <footer class="hint">type <code>help</code> · try <code>whoami</code>, <code>ls</code>, <code>blog</code>, <code>cat wiz.log</code></footer>
+  <footer class="hint">type <code>help</code> · try <code>whoami</code>, <code>ls</code>, <code>blog</code>, <code>cat wiz.log</code> · <kbd>tab</kbd> to autocomplete</footer>
+</div>
+
+<div id="regular" hidden>
+  <div class="reg-wrap">
+
+    <header class="reg-hero">
+      <div class="reg-eyebrow">Cyber Defense Specialist → Cloud Security</div>
+      <h1>Gafar Balogun</h1>
+      <p class="reg-sub">Operating Wiz across CSPM, CWPP, and KSPM at Citizens — pivoting toward platform engineering: secure, observable cloud-native infrastructure on AWS and Kubernetes.</p>
+      <div class="reg-links">
+        <a href="https://github.com/gafarbalogun" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://medium.com/@gafar.cloud" target="_blank" rel="noopener">Blog</a>
+        <a href="mailto:gbalogun26@gmail.com">Email</a>
+      </div>
+    </header>
+
+    <section class="reg-section">
+      <h2>Wiz — daily driver</h2>
+      <p>Operate Wiz across three surfaces: <strong>CSPM</strong> (cloud posture across AWS accounts), <strong>CWPP</strong> (workload protection, runtime risk), and <strong>KSPM</strong> (Kubernetes security posture).</p>
+      <p>Reviewed the full SOC detection catalog end-to-end — scored each rule on difficulty to tune, log availability, and how far it can realistically be automated. That review is what surfaced the pod-replication gap below.</p>
+    </section>
+
+    <section class="reg-section">
+      <h2>Incidents I'm proud of</h2>
+      <h3>Jenkins pipeline — cascading failure</h3>
+      <p>A blocked <code>PowerShell.exe</code> alert cleared from a security standpoint, but the Jenkins pipeline it touched kept failing. No one from cyber was looped into the incident that got raised. Stepped in as the bridge — traced it back through prior alerts, found it was a recurring threshold issue, and re-applied a prior fix to extend the timeout. Resolved.</p>
+      <h3>/etc/passwd detection — pod replication gap</h3>
+      <p>A detection tuned to catch modifications to sensitive files like <code>/etc/passwd</code> didn't account for pod replication — a new pod writing fresh credentials on startup looks identical to tampering. Catching it took direct knowledge of how Kubernetes scheduling and replication actually behave. Fix: in progress.</p>
+    </section>
+
+    <section class="reg-section">
+      <h2>AWS training series — self-started</h2>
+      <p>Built and taught an AWS series for incoming interns, added on top of their standard onboarding, delivered over their 10-week internship: VPC design, EC2 deployment, and S3.</p>
+    </section>
+
+    <section class="reg-section" id="reg-projects">
+      <h2>Projects</h2>
+      <div class="reg-cards" id="reg-projects-list"></div>
+    </section>
+
+    <section class="reg-section" id="reg-blog">
+      <h2>Latest from the blog</h2>
+      <div class="reg-cards" id="reg-blog-list"></div>
+    </section>
+
+    <section class="reg-section">
+      <h2>Contact</h2>
+      <p><a href="https://github.com/gafarbalogun" target="_blank" rel="noopener">github.com/gafarbalogun</a> · <a href="mailto:gbalogun26@gmail.com">gbalogun26@gmail.com</a></p>
+    </section>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
