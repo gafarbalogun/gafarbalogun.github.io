@@ -1,4 +1,5 @@
 const GH = 'https://github.com/gafarbalogun';
+const LINKEDIN = 'https://linkedin.com/in/gafarbalogun';
 const EMAIL = 'gbalogun26@gmail.com';
 
 const projects = [

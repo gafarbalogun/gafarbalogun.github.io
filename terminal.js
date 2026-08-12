@@ -145,6 +145,7 @@ work — see <span class="accent">contact</span>.`,
     contact(){
       print(`<span class="section-title">contact</span>
   github    <a href="${GH}" target="_blank" rel="noopener">github.com/gafarbalogun</a>
+  linkedin  <a href="${LINKEDIN}" target="_blank" rel="noopener">linkedin.com/in/gafarbalogun</a>
   email     <a href="mailto:${EMAIL}">${EMAIL}</a>`);
     },
     home(){ window.location.href = 'index.html'; },
