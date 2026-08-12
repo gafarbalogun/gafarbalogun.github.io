@@ -14,6 +14,12 @@ const projects = [
     url: `${GH}/secure-pipeline`,
     status: 'done',
   },
+  {
+    name: 'mac-lib',
+    desc: 'One command for managing and auditing every package manager on a Mac — brew, pipx, pip, npm, gem, cargo, mas — with a built-in CVE scanner (grype, trivy, syft, osv-scanner) and hardcoded protection for macOS system paths.',
+    url: `${GH}/mac-lib`,
+    status: 'done',
+  },
 ];
 
 const certList = [
