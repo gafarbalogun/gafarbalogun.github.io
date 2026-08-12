@@ -14,12 +14,6 @@ const projects = [
     url: `${GH}/secure-pipeline`,
     status: 'done',
   },
-  {
-    name: 'iac-test',
-    desc: 'Terraform / infrastructure-as-code sandbox for testing modules before they touch anything real.',
-    url: `${GH}/iac-test`,
-    status: 'active',
-  },
 ];
 
 const certList = [
