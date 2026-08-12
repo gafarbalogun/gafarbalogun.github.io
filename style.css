@@ -160,18 +160,42 @@ table.kv td.k{color: var(--text-dim);}
 .mode-toggle:hover{ border-color: var(--orange-dim); color: var(--text); }
 .mode-toggle-icon{ color: var(--orange); }
 
-/* autocomplete toggle in topbar */
+/* autocomplete toggle in topbar — small slider, no label text */
 .ac-toggle{
   display:flex;
   align-items:center;
-  gap:6px;
-  color: var(--text-dim);
-  font-size: 11px;
   cursor: pointer;
   user-select:none;
-  white-space:nowrap;
 }
-.ac-toggle input{ accent-color: var(--orange); cursor:pointer; }
+.ac-toggle input{
+  position:absolute;
+  opacity:0;
+  width:0;
+  height:0;
+}
+.ac-slider{
+  position:relative;
+  display:inline-block;
+  width:30px;
+  height:16px;
+  background:#1e2422;
+  border:1px solid var(--border);
+  border-radius:999px;
+  transition: background .15s;
+}
+.ac-slider::before{
+  content:"";
+  position:absolute;
+  top:1px;
+  left:1px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background: var(--text-dim);
+  transition: transform .15s, background .15s;
+}
+.ac-toggle input:checked + .ac-slider{ background: rgba(255,138,61,0.18); border-color: var(--orange-dim); }
+.ac-toggle input:checked + .ac-slider::before{ transform: translateX(14px); background: var(--orange); }
 
 /* ghost autocomplete suggestion */
 .input-wrap{ position: relative; flex:1; display:flex; }
@@ -227,6 +251,37 @@ kbd{
 }
 .reg-links{ display:flex; gap:18px; }
 .reg-links a{ font-size:14px; }
+
+.reg-terminal-cta{
+  margin-top: 28px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  max-width: 520px;
+  text-align:left;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.reg-terminal-cta:hover{
+  border-color: var(--orange-dim);
+  background: #101312;
+}
+.reg-terminal-cta-prompt{ color: var(--orange); font-weight:700; white-space:nowrap; }
+.reg-terminal-cta-text{ color: var(--text-dim); }
+.reg-terminal-cta-cursor{
+  display:inline-block;
+  color: var(--orange);
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink{ 50%{ opacity: 0; } }
 
 .reg-section{
   padding: 32px 0;

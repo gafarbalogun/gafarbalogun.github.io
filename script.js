@@ -335,25 +335,27 @@ work — see <span class="accent">contact</span>.`,
 
   function setMode(mode){
     localStorage.setItem('view-mode', mode);
-    if (mode === 'regular') {
-      crt.hidden = true;
-      regular.hidden = false;
-      modeLabel.textContent = 'terminal view';
-      renderRegular();
-    } else {
+    if (mode === 'terminal') {
       crt.hidden = false;
       regular.hidden = true;
-      modeLabel.textContent = 'regular view';
+      modeLabel.textContent = 'back to site';
       input.focus();
+    } else {
+      crt.hidden = true;
+      regular.hidden = false;
+      modeLabel.textContent = 'terminal';
+      renderRegular();
     }
   }
 
   modeToggle.addEventListener('click', () => {
-    const current = localStorage.getItem('view-mode') === 'regular' ? 'regular' : 'terminal';
-    setMode(current === 'regular' ? 'terminal' : 'regular');
+    const current = localStorage.getItem('view-mode') === 'terminal' ? 'terminal' : 'regular';
+    setMode(current === 'terminal' ? 'regular' : 'terminal');
   });
 
-  setMode(localStorage.getItem('view-mode') === 'regular' ? 'regular' : 'terminal');
+  document.getElementById('launch-terminal').addEventListener('click', () => setMode('terminal'));
+
+  setMode(localStorage.getItem('view-mode') === 'terminal' ? 'terminal' : 'regular');
 
   const bootLines = [
     ['boot', 'cloud-sec-terminal v1.0.0 — initializing session...'],
