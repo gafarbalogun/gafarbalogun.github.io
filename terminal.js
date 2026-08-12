@@ -4,9 +4,6 @@
   const input = document.getElementById('cmd-input');
   const terminal = document.getElementById('terminal');
 
-  const GH = 'https://github.com/gafarbalogun';
-  const EMAIL = 'gbalogun26@gmail.com';
-
   const files = {
     'whoami.txt': () => `<span class="hl">Gafar Balogun</span>
 Cyber Defense Specialist @ Citizens
@@ -85,38 +82,8 @@ work — see <span class="accent">contact</span>.`,
   <span class="ok">[x]</span> Microsoft Certified: Azure Fundamentals (AZ-900)`,
   };
 
-  const certList = [
-    { name: 'AWS Certified Solutions Architect – Associate', status: 'done' },
-    { name: 'AWS Certified Cloud Practitioner', status: 'done' },
-    { name: 'Certified Kubernetes Administrator (CKA)', status: 'progress' },
-    { name: 'CompTIA Linux+', status: 'done' },
-    { name: 'Microsoft Certified: Azure Fundamentals (AZ-900)', status: 'done' },
-  ];
-
   let posts = [];
-  fetch('posts.json').then(r => r.json()).then(data => { posts = data; }).catch(() => {});
-
-  const projects = [
-    {
-      name: 'cnapp-eks',
-      desc: 'CNAPP-style security platform built on EKS — Terraform-provisioned, cloud-native detection/response patterns.',
-      url: `${GH}/cnapp-eks`,
-    },
-    {
-      name: 'secure-pipeline',
-      desc: 'CI/CD pipeline hardened with security gates baked into the workflow, not bolted on after.',
-      url: `${GH}/secure-pipeline`,
-    },
-    {
-      name: 'iac-test',
-      desc: 'Terraform / infrastructure-as-code sandbox for testing modules before they touch anything real.',
-      url: `${GH}/iac-test`,
-    },
-  ];
-
-  function esc(s){
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
+  fetchPosts().then(data => { posts = data; });
 
   function print(html, cls){
     const div = document.createElement('div');
@@ -136,26 +103,22 @@ work — see <span class="accent">contact</span>.`,
     terminal.scrollTop = terminal.scrollHeight;
   }
 
-  function fmtDate(iso){
-    const d = new Date(iso + 'T00:00:00Z');
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
-  }
-
   const commands = {
     help(){
       print(`<span class="section-title">available commands</span>
   <span class="accent">whoami</span>          who I am, role, focus
   <span class="accent">about</span>            same as whoami
   <span class="accent">wiz</span>              Wiz CSPM / CWPP / KSPM work
-  <span class="accent">incidents</span>        two things I'm proud of
+  <span class="accent">incidents</span>        two things I'm proud of + labs
   <span class="accent">training</span>         AWS intern training series
   <span class="accent">focus</span>            where I'm headed — platform engineering
+  <span class="accent">certs</span>             certifications
   <span class="accent">ls</span>               list project files
   <span class="accent">cat &lt;file&gt;</span>      read a project/log file
   <span class="accent">projects</span>         same as ls, expanded view
   <span class="accent">blog</span>              latest posts from medium.com/@gafar.cloud
-  <span class="accent">certs</span>             certifications
   <span class="accent">contact</span>          how to reach me
+  <span class="accent">home</span>             back to the regular site
   <span class="accent">clear</span>            clear the screen`);
     },
     certs(){ print(files['certs.txt']()); },
@@ -184,6 +147,7 @@ work — see <span class="accent">contact</span>.`,
   github    <a href="${GH}" target="_blank" rel="noopener">github.com/gafarbalogun</a>
   email     <a href="mailto:${EMAIL}">${EMAIL}</a>`);
     },
+    home(){ window.location.href = 'index.html'; },
     ls(args){
       if (args[0] === 'projects' || args[0] === 'projects/') {
         return commands.projects();
@@ -194,7 +158,7 @@ work — see <span class="accent">contact</span>.`,
     projects(){
       let block = `<span class="section-title">projects</span>\n`;
       projects.forEach(p => {
-        block += `  <span class="accent">${p.name}</span>\n    ${p.desc}\n    <a href="${p.url}" target="_blank" rel="noopener">${p.url}</a>\n\n`;
+        block += `  <span class="accent">${p.name}</span> <span class="dim">(${p.status})</span>\n    ${p.desc}\n    <a href="${p.url}" target="_blank" rel="noopener">${p.url}</a>\n\n`;
       });
       block += `<span class="dim">more on <a href="${GH}?tab=repositories" target="_blank" rel="noopener">github.com/gafarbalogun</a></span>`;
       print(block);
@@ -288,74 +252,6 @@ work — see <span class="accent">contact</span>.`,
   });
 
   terminal.addEventListener('click', () => input.focus());
-
-  // --- view mode toggle (terminal vs regular scrolling page) ---
-  const crt = document.getElementById('crt');
-  const regular = document.getElementById('regular');
-  const modeToggle = document.getElementById('mode-toggle');
-  const modeLabel = document.getElementById('mode-toggle-label');
-
-  function renderRegular(){
-    const projList = document.getElementById('reg-projects-list');
-    projList.innerHTML = projects.map(p => `
-      <div class="reg-card">
-        <h3>${esc(p.name)}</h3>
-        <p>${esc(p.desc)}</p>
-        <a href="${p.url}" target="_blank" rel="noopener">${p.url}</a>
-      </div>`).join('');
-
-    const certsSection = document.querySelector('#reg-projects');
-    if (!document.getElementById('reg-certs')) {
-      const section = document.createElement('section');
-      section.className = 'reg-section';
-      section.id = 'reg-certs';
-      section.innerHTML = `<h2>Certifications</h2><div class="reg-cards" id="reg-certs-list"></div>`;
-      certsSection.parentNode.insertBefore(section, certsSection);
-    }
-    document.getElementById('reg-certs-list').innerHTML = certList.map(c => `
-      <div class="reg-card">
-        <h3>${c.status === 'done' ? '✓' : '~'} ${esc(c.name)}</h3>
-        ${c.status === 'progress' ? '<p class="dim">in progress</p>' : ''}
-      </div>`).join('');
-
-    const blogList = document.getElementById('reg-blog-list');
-    if (posts.length) {
-      blogList.innerHTML = posts.map(p => `
-        <div class="reg-card">
-          <h3>${esc(p.title)}</h3>
-          <div class="meta">${fmtDate(p.date)} · ${p.tags.join(', ')}</div>
-          <p>${esc(p.snippet)}</p>
-          <a href="${p.url}" target="_blank" rel="noopener">Read on Medium</a>
-        </div>`).join('');
-    } else {
-      blogList.innerHTML = `<p class="dim">loading posts...</p>`;
-      setTimeout(renderRegular, 500);
-    }
-  }
-
-  function setMode(mode){
-    localStorage.setItem('view-mode', mode);
-    if (mode === 'terminal') {
-      crt.hidden = false;
-      regular.hidden = true;
-      modeLabel.textContent = 'back to site';
-      input.focus();
-    } else {
-      crt.hidden = true;
-      regular.hidden = false;
-      modeLabel.textContent = 'terminal';
-      renderRegular();
-    }
-  }
-
-  modeToggle.addEventListener('click', () => {
-    const current = localStorage.getItem('view-mode') === 'terminal' ? 'terminal' : 'regular';
-    setMode(current === 'terminal' ? 'regular' : 'terminal');
-  });
-
-  document.getElementById('launch-terminal').addEventListener('click', () => setMode('terminal'));
-
-  setMode(localStorage.getItem('view-mode') === 'terminal' ? 'terminal' : 'regular');
 
   const bootLines = [
     ['boot', 'cloud-sec-terminal v1.0.0 — initializing session...'],

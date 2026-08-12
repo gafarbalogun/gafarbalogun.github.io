@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gafar@cloud-sec:~$</title>
+<meta name="description" content="Interactive terminal — explore Gafar Balogun's experience, projects, and blog with easy commands.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230a0d0c%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 text-anchor=%22middle%22 fill=%22%23ff8a3d%22>&gt;</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand"><span class="accent">gafar</span>@cloud-sec</a>
+  <div class="links">
+    <a href="index.html">home</a>
+    <a href="projects.html">projects</a>
+    <a href="blog.html">blog</a>
+    <a href="terminal.html" class="term-link active">terminal</a>
+  </div>
+</nav>
+
+<div id="crt">
+  <header class="topbar">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="title">gafar@cloud-sec — bash — 100x40</div>
+    <label class="ac-toggle" title="tab-complete commands (on/off)">
+      <input type="checkbox" id="ac-toggle" checked>
+      <span class="ac-slider"></span>
+    </label>
+  </header>
+
+  <main id="terminal" tabindex="0">
+    <div id="boot"></div>
+    <div id="output"></div>
+
+    <div class="input-line">
+      <span class="prompt"><span class="user">gafar</span><span class="at">@</span><span class="host">cloud-sec</span><span class="colon">:</span><span class="path">~</span><span class="dollar">$</span></span>
+      <span class="input-wrap">
+        <span class="ghost" id="ghost"></span>
+        <input id="cmd-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" />
+      </span>
+    </div>
+  </main>
+
+  <footer class="hint">type <code>help</code> · try <code>whoami</code>, <code>ls</code>, <code>blog</code>, <code>cat wiz.log</code> · <kbd>tab</kbd> to complete</footer>
+</div>
+
+<script src="shared.js"></script>
+<script src="terminal.js"></script>
+</body>
+</html>
