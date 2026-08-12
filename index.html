@@ -67,6 +67,10 @@
       <p>A blocked <code>PowerShell.exe</code> alert cleared from a security standpoint, but the Jenkins pipeline it touched kept failing. No one from cyber was looped into the incident that got raised. Stepped in as the bridge — traced it back through prior alerts, found it was a recurring threshold issue, and re-applied a prior fix to extend the timeout. Resolved.</p>
       <h3>/etc/passwd detection — pod replication gap</h3>
       <p>A detection tuned to catch modifications to sensitive files like <code>/etc/passwd</code> didn't account for pod replication — a new pod writing fresh credentials on startup looks identical to tampering. Catching it took direct knowledge of how Kubernetes scheduling and replication actually behave. Fix: in progress.</p>
+      <h3>From the labs — cnapp-eks</h3>
+      <p>Rebuilding a commercial CNAPP on EKS from open-source tools: Prowler (CSPM), Kubescape (KSPM), Falco (CWPP), Trivy Operator (image scanning). Plan: deliberately misconfigure workloads — a privileged pod, a secret in a plain env var, no resource limits — and compare which tool catches what. The misses are the point; that's why four tools instead of two. Mid-build. <a href="https://github.com/gafarbalogun/cnapp-eks" target="_blank" rel="noopener">github.com/gafarbalogun/cnapp-eks</a></p>
+      <h3>From the labs — secure-pipeline</h3>
+      <p>First hands-on shift-left build, before I really knew Docker. A Flask app, a non-root Dockerfile, and a deploy script that runs Bandit (static analysis on the app code) and Trivy (CVE scan on the built image) before anything ships — either scan failing stops the deploy. Done, kept as a record of where this started. <a href="https://github.com/gafarbalogun/secure-pipeline" target="_blank" rel="noopener">github.com/gafarbalogun/secure-pipeline</a></p>
     </section>
 
     <section class="reg-section">

@@ -39,7 +39,23 @@ A detection tuned to catch modifications to sensitive files like
 <span class="hl">/etc/passwd</span> didn't account for pod replication — a new pod
 writing fresh credentials on startup looks identical to tampering.
 Catching it took direct knowledge of how <span class="accent">Kubernetes scheduling
-and replication</span> actually behave. Fix: <span class="warn">in progress</span>.`,
+and replication</span> actually behave. Fix: <span class="warn">in progress</span>.
+
+<span class="section-title">from the labs</span>
+<span class="hl">cnapp-eks</span> — rebuilding a commercial CNAPP on EKS from open-source
+tools: <span class="accent">Prowler</span> (CSPM), <span class="accent">Kubescape</span> (KSPM), <span class="accent">Falco</span> (CWPP), Trivy Operator
+(image scanning). Plan: deliberately misconfigure workloads — a
+privileged pod, a secret in a plain env var, no resource limits —
+and compare which tool catches what. The misses are the point;
+that's why four tools instead of two. <span class="warn">mid-build</span>.
+<a href="https://github.com/gafarbalogun/cnapp-eks" target="_blank" rel="noopener">github.com/gafarbalogun/cnapp-eks</a>
+
+<span class="hl">secure-pipeline</span> — first hands-on shift-left build, before I really
+knew Docker. A Flask app, a non-root Dockerfile, and a deploy script
+that runs <span class="accent">Bandit</span> (static analysis on the app code) and <span class="accent">Trivy</span>
+(CVE scan on the built image) before anything ships — either scan
+failing stops the deploy. <span class="ok">done</span>, kept as a record of where this started.
+<a href="https://github.com/gafarbalogun/secure-pipeline" target="_blank" rel="noopener">github.com/gafarbalogun/secure-pipeline</a>`,
 
     'training.md': () => `<span class="section-title">AWS training series — self-started</span>
 Built and taught an AWS series for incoming interns, added on top
