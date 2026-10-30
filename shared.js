@@ -20,7 +20,6 @@ const projects = [
 const certList = [
   { name: 'AWS Certified Solutions Architect – Associate', status: 'done' },
   { name: 'AWS Certified Cloud Practitioner', status: 'done' },
-  { name: 'Certified Kubernetes Administrator (CKA)', status: 'progress' },
   { name: 'CompTIA Linux+', status: 'done' },
   { name: 'Microsoft Certified: Azure Fundamentals (AZ-900)', status: 'done' },
 ];
