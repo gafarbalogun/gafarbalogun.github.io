@@ -20,8 +20,7 @@ Operate Wiz across three surfaces:
 
 Reviewed our full SOC detection catalog end-to-end — scored each
 rule on difficulty to tune, log availability, and how far it can
-realistically be automated. That review is what surfaced the
-pod-replication gap below.`,
+realistically be automated. `,
 
     'incidents.log': () => `<span class="section-title">Jenkins pipeline — cascading failure</span>
 A blocked <span class="hl">PowerShell.exe</span> alert cleared from a security
@@ -31,22 +30,7 @@ I stepped in as the bridge — traced it back through prior alerts,
 found it was a recurring <span class="warn">threshold</span> issue, not a new one,
 and re-applied a prior fix to extend the timeout. Resolved.
 
-<span class="section-title">/etc/passwd detection — pod replication gap</span>
-A detection tuned to catch modifications to sensitive files like
-<span class="hl">/etc/passwd</span> didn't account for pod replication — a new pod
-writing fresh credentials on startup looks identical to tampering.
-Catching it took direct knowledge of how <span class="accent">Kubernetes scheduling
-and replication</span> actually behave. Fix: <span class="warn">in progress</span>.
-
-<span class="section-title">from the labs</span>
-<span class="hl">cnapp-eks</span> — rebuilding a commercial CNAPP on EKS from open-source
-tools: <span class="accent">Prowler</span> (CSPM), <span class="accent">Kubescape</span> (KSPM), <span class="accent">Falco</span> (CWPP), Trivy Operator
-(image scanning). Plan: deliberately misconfigure workloads — a
-privileged pod, a secret in a plain env var, no resource limits —
-and compare which tool catches what. The misses are the point;
-that's why four tools instead of two. <span class="warn">mid-build</span>.
-<a href="https://github.com/gafarbalogun/cnapp-eks" target="_blank" rel="noopener">github.com/gafarbalogun/cnapp-eks</a>
-
+<span class="section-title">Completed project: secure-pipeline</span>
 <span class="hl">secure-pipeline</span> — first hands-on shift-left build, before I really
 knew Docker. A Flask app, a non-root Dockerfile, and a deploy script
 that runs <span class="accent">Bandit</span> (static analysis on the app code) and <span class="accent">Trivy</span>
@@ -77,7 +61,6 @@ work — see <span class="accent">contact</span>.`,
     'certs.txt': () => `<span class="section-title">certifications</span>
   <span class="ok">[x]</span> AWS Certified Solutions Architect – Associate
   <span class="ok">[x]</span> AWS Certified Cloud Practitioner
-  <span class="warn">[~]</span> Certified Kubernetes Administrator (CKA) <span class="dim">— in progress</span>
   <span class="ok">[x]</span> CompTIA Linux+
   <span class="ok">[x]</span> Microsoft Certified: Azure Fundamentals (AZ-900)`,
   };
@@ -109,7 +92,7 @@ work — see <span class="accent">contact</span>.`,
   <span class="accent">whoami</span>          who I am, role, focus
   <span class="accent">about</span>            same as whoami
   <span class="accent">wiz</span>              Wiz CSPM / CWPP / KSPM work
-  <span class="accent">incidents</span>        two things I'm proud of + labs
+  <span class="accent">incidents</span>        resolved incident and completed projects
   <span class="accent">training</span>         AWS intern training series
   <span class="accent">focus</span>            where I'm headed — platform engineering
   <span class="accent">certs</span>             certifications
