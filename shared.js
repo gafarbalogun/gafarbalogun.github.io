@@ -5,23 +5,23 @@ const EMAIL = 'gbalogun26@gmail.com';
 const projects = [
   {
     name: 'secure-pipeline',
-    desc: 'First hands-on shift-left build: a Flask app, non-root Dockerfile, and a deploy script gated on Bandit + Trivy scans. Kept as a record of where it started.',
+    desc: 'Reusable for exploring a local security-gated deployment: Bandit checks Flask source, Trivy checks the Docker image, and the replacement runs only after both checks pass.',
     url: `${GH}/secure-pipeline`,
-    status: 'done',
+    status: 'reusable',
   },
   {
     name: 'mac-lib',
-    desc: 'One command for managing and auditing every package manager on a Mac — brew, pipx, pip, npm, gem, cargo, mas — with a built-in CVE scanner (grype, trivy, syft, osv-scanner) and hardcoded protection for macOS system paths.',
+    desc: 'Reusable for macOS package inventory, maintenance, and local vulnerability checks across multiple package managers. Includes repeatable CLI commands and protected-path guardrails.',
     url: `${GH}/mac-lib`,
-    status: 'done',
+    status: 'reusable',
   },
 ];
 
 const certList = [
-  { name: 'AWS Certified Solutions Architect – Associate', status: 'done' },
-  { name: 'AWS Certified Cloud Practitioner', status: 'done' },
-  { name: 'CompTIA Linux+', status: 'done' },
-  { name: 'Microsoft Certified: Azure Fundamentals (AZ-900)', status: 'done' },
+  { name: 'AWS Certified Solutions Architect – Associate', status: 'reusable' },
+  { name: 'AWS Certified Cloud Practitioner', status: 'reusable' },
+  { name: 'CompTIA Linux+', status: 'reusable' },
+  { name: 'Microsoft Certified: Azure Fundamentals (AZ-900)', status: 'reusable' },
 ];
 
 function esc(s){
