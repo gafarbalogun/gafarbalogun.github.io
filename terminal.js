@@ -30,12 +30,12 @@ I stepped in as the bridge — traced it back through prior alerts,
 found it was a recurring <span class="warn">threshold</span> issue, not a new one,
 and re-applied a prior fix to extend the timeout. Resolved.
 
-<span class="section-title">Completed project: secure-pipeline</span>
+<span class="section-title">Reusable reference: secure-pipeline</span>
 <span class="hl">secure-pipeline</span> — first hands-on shift-left build, before I really
 knew Docker. A Flask app, a non-root Dockerfile, and a deploy script
 that runs <span class="accent">Bandit</span> (static analysis on the app code) and <span class="accent">Trivy</span>
 (CVE scan on the built image) before anything ships — either scan
-failing stops the deploy. <span class="ok">done</span>, kept as a record of where this started.
+failing stops the deployment attempt. <span class="ok">Reusable for a local scan-gated deployment example.</span>
 <a href="https://github.com/gafarbalogun/secure-pipeline" target="_blank" rel="noopener">github.com/gafarbalogun/secure-pipeline</a>`,
 
     'training.md': () => `<span class="section-title">AWS training series — self-started</span>
@@ -92,7 +92,7 @@ work — see <span class="accent">contact</span>.`,
   <span class="accent">whoami</span>          who I am, role, focus
   <span class="accent">about</span>            same as whoami
   <span class="accent">wiz</span>              Wiz CSPM / CWPP / KSPM work
-  <span class="accent">incidents</span>        resolved incident and completed projects
+  <span class="accent">incidents</span>        resolved incident and reusable security demos
   <span class="accent">training</span>         AWS intern training series
   <span class="accent">focus</span>            where I'm headed — platform engineering
   <span class="accent">certs</span>             certifications
