@@ -4,12 +4,6 @@ const EMAIL = 'gbalogun26@gmail.com';
 
 const projects = [
   {
-    name: 'cnapp-eks',
-    desc: 'Rebuilding a commercial CNAPP on EKS from open-source tools — Prowler (CSPM), Kubescape (KSPM), Falco (CWPP), Trivy Operator. Mid-build.',
-    url: `${GH}/cnapp-eks`,
-    status: 'in progress',
-  },
-  {
     name: 'secure-pipeline',
     desc: 'First hands-on shift-left build: a Flask app, non-root Dockerfile, and a deploy script gated on Bandit + Trivy scans. Kept as a record of where it started.',
     url: `${GH}/secure-pipeline`,
