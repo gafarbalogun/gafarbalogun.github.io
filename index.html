@@ -43,8 +43,6 @@
     <p><strong>Wiz</strong> across three surfaces — CSPM (cloud posture), CWPP (workload protection), KSPM (Kubernetes posture). Reviewed the full SOC detection catalog end to end: difficulty to tune, log availability, automation feasibility.</p>
     <h3>Jenkins pipeline — cascading failure</h3>
     <p>A blocked <code>PowerShell.exe</code> alert cleared, but the Jenkins pipeline it touched kept failing with no one from cyber looped in. Traced it to a recurring threshold issue and re-applied a prior fix. Resolved.</p>
-    <h3>/etc/passwd detection — pod replication gap</h3>
-    <p>A detection on sensitive file changes didn't account for pod replication — a new pod writing fresh credentials looked like tampering. Took direct Kubernetes knowledge to catch. Fix in progress.</p>
     <h3>AWS training series</h3>
     <p>Built and taught an AWS series for incoming interns on top of standard onboarding — VPC, EC2, S3 — over a 10-week internship.</p>
   </section>
